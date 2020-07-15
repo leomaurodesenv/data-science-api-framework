@@ -47,12 +47,12 @@ def run(args):
 ---
 ## Deep personalization
 
-This repository contains:   
--   A predefined Python libraries for your API; see [requirements.txt](requirements.txt).
--   A simple GET API method; can add new methods in [app/daemon.py](app/daemon.py).
--   A simple continuos integration; see [travis.yml](travis.yml).
--   A generic Docker image; see [Dockerfile](Dockerfile).
--   Create a issue for any questions or suggestions!
+Useful personalizations:   
+-   Add Python libraries for your API; see [requirements.txt](requirements.txt).
+-   Add new API methods; see [app/daemon.py](app/daemon.py).
+-   Improve the continuos integration tests; see [travis.yml](travis.yml).
+-   Improve the Docker image; see [Dockerfile](Dockerfile).
+-   Create an issue for any questions or suggestions!
 
 ---
 ## Also look ~
