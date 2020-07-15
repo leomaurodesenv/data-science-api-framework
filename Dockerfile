@@ -4,7 +4,7 @@ FROM python:3
 
 #-- Define the labels
 LABEL maintainer="Leonardo Mauro <leomaurodesenv>"
-LABEL version="0.2.0"
+LABEL version="0.2.1"
 
 #-- Working directory
 # it will be virtualized in docker run

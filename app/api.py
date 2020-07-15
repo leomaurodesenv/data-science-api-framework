@@ -21,12 +21,13 @@ def init():
 
 # Called when the API is requested
 def run(args):
-    ''' 
+    '''
     API logic
     @param args: GET parameters (dict)
     @return: API response (dict)
     @access: private
     '''
+    global varExample
     response = args.copy()
     response['message'] = varExample
     return response

@@ -1,8 +1,7 @@
 #!/bin/sh
 
 #-- Variables
-APP_PATH="$(PWD)/app"
-APP_IMAGE="data-science-api:0.2.0"
+APP_IMAGE="data-science-api:0.2.1"
 APP_NAME="data-science-api-container"
 
 #-- Introduction message

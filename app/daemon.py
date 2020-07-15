@@ -16,16 +16,15 @@ from flask import request, jsonify
 app = flask.Flask('data-science-api')
 app.config['DEBUG'] = False
 app.config['ENV'] = 'development'
-appHost = 'localhost'
 appPort = 5050
-api.init() 
+api.init()
 
 
 #-- Home page
 @app.route('/', methods=['GET'])
 def home():
     return "<h2>Data Science API Framework</h2>\
-    <p>This API is running - <a href=\"http://{0}:{1}/api/\">http://{0}:{1}/api/</a>.</p>".format(appHost,appPort)
+    <p>This API is running - <a href=\"http://{0}/api/\">http://{0}/api/</a>.</p>".format(request.host)
 
 
 #-- API url
@@ -35,4 +34,4 @@ def apiRun():
     return jsonify(response)
 
 
-app.run(host=appHost, port=appPort)
+app.run(port=appPort)
