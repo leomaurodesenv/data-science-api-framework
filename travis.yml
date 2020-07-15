@@ -1,0 +1,15 @@
+#-- Programming language
+language: python
+python:
+  - "3.7"
+#-- Command to install dependencies
+install:
+  - pip install -r requirements.txt
+
+#-- Travis ci testing
+services:
+  - docker
+before_install:
+  - docker pull python:3
+script:
+  - docker build -t travis-ci-build .
