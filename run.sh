@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #-- Variables
-APP_IMAGE="data-science-api:0.2.1"
+APP_IMAGE="data-science-api:0.2.2"
 APP_NAME="data-science-api-container"
 
 #-- Introduction message

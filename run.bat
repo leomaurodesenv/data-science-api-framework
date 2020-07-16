@@ -1,7 +1,7 @@
 @ECHO OFF
 
 ::-- Variables
-SET APP_IMAGE=data-science-api:0.2.1
+SET APP_IMAGE=data-science-api:0.2.2
 SET APP_NAME=data-science-api-container
 
 ::-- Introduction message
