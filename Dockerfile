@@ -1,21 +1,19 @@
 #-- Define the startup image
-# container image = python:3
-FROM python:3
+# image from https://github.com/tiangolo/uwsgi-nginx-flask-docker
+FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 #-- Define the labels
 LABEL maintainer="Leonardo Mauro <leomaurodesenv>"
-LABEL version="0.2.2"
+LABEL version="0.3.0"
+
+ENV LISTEN_PORT 5050
+EXPOSE 5050
 
 #-- Working directory
 # it will be virtualized in docker run
-COPY . /app
-WORKDIR /app
+COPY ./app /app
+COPY ./requirements.txt /app
 
 #-- Python requirements
-RUN pip install --no-cache-dir -r ./requirements.txt
-
-#-- API port
-EXPOSE 5050
-
-#-- Running api
-CMD [ "python", "./app/daemon.py" ]
+RUN python -m pip install --upgrade pip
+RUN pip install --no-cache-dir -r /app/requirements.txt
