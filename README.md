@@ -19,7 +19,6 @@ Important links: [DockerHub](http://hub.docker.com/), [Documentation](https://do
 Each Operating System (OS) have its own steps.   
 **Note**: Docker CE (Community Edition), Docker EE (Enterprise Edition).   
 
-your OS command-line.
 ```shell
 # build image
 $ docker build -t ds-api .
