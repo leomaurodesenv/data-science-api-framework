@@ -17,9 +17,3 @@ ECHO -----------------------------------------
 docker build -t %APP_IMAGE% .
 :: running container
 docker run --rm -it --name %APP_NAME% -p 5050:5050 %APP_IMAGE%
-
-::-- Conclusion
-ECHO -----------------------------------------
-ECHO Your API is running...
-ECHO API: http://localhost:5050/api/
-ECHO -----------------------------------------

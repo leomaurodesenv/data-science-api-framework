@@ -8,31 +8,36 @@
 '''
 
 #-- Imports
-import flask
-import api
-from flask import request, jsonify
+import config
+from restplus import api
+from flask import Flask
+#-- Endpoints
+from endpoints.hello_world import api as ns_hello
+
 
 #-- API predefinitions
-app = flask.Flask('ds-api')
-app.config['DEBUG'] = False
-app.config['ENV'] = 'production'
-api.init()
+app = Flask(config.FLASK_NAME)
 
 
-#-- Home page
-@app.route('/')
-def home():
-    return "<h2>Data Science API Framework</h2>\
-    <p>This API is running - <a href=\"http://{0}/api/\">http://{0}/api/</a>.</p>".format(request.host)
+#-- API Configurations
+def configure_app(app):
+    app.config['DEBUG'] = config.FLASK_DEBUG
+    app.config['ENV'] = config.FLASK_ENV
+    app.config['RESTPLUS_VALIDATE'] = config.RESTPLUS_VALIDATE
+    app.config['ERROR_404_HELP'] = config.RESTPLUS_ERROR_404_HELP
+    app.config['SWAGGER_UI_DOC_EXPANSION'] = config.RESTPLUS_SWAGGER_UI_DOC_EXPANSION
+    app.config['RESTPLUS_MASK_SWAGGER'] = config.RESTPLUS_MASK_SWAGGER
 
 
-#-- API url
-@app.route('/api/', methods=['GET'])
-def apiRun():
-    response = api.run(request.args)
-    return jsonify(response)
+#-- API Init
+def initialize_app(app):
+    configure_app(app)
+    #-- add your endpoints here
+    api.init_app(app)
+    api.add_namespace(ns_hello)
 
 
-#-- Publishing app
+#-- API run
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
+    initialize_app(app)
+    app.run(host=config.FLASK_HOST, port=config.FLASK_PORT)
