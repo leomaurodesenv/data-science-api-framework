@@ -4,7 +4,7 @@ FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 #-- Define the labels
 LABEL maintainer="Leonardo Mauro <leomaurodesenv>"
-LABEL version="0.3.0"
+LABEL version="0.3.3"
 
 ENV LISTEN_PORT 5050
 EXPOSE 5050

@@ -1,6 +1,8 @@
 #-- Main packages
 # api
 flask>=1.0.3
+flask-restplus>=0.13.0
+Werkzeug==0.16.1
 # data
 numpy>=1.19.0
 pandas>=1.0.5
