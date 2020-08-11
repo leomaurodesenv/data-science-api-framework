@@ -44,7 +44,7 @@ Add the new endpoint to [app/main.py](app/main.py); that is it, just run.
 Useful personalizations:   
 -   Add Python libraries for your API; see [requirements.txt](requirements.txt).
 -   Add new API endpoints; see [app/main.py](app/main.py).
-    -   Endpoint logic, such as [app/endpoints/hello_world.py](app/endpoints/hello_world.py).
+-   Create new endpoints, such as [app/endpoints/hello_world.py](app/endpoints/hello_world.py).
 -   Improve restplus; see [app/restplus.py](app/restplus.py).
 -   Improve the continuos integration tests; see [travis.yml](travis.yml).
 -   Improve the Docker image; see [Dockerfile](Dockerfile).
