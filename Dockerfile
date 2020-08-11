@@ -1,10 +1,9 @@
 #-- Define the startup image
-# image from https://github.com/tiangolo/uwsgi-nginx-flask-docker
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+FROM tiangolo/meinheld-gunicorn-flask:python3.7
 
 #-- Define the labels
 LABEL maintainer="Leonardo Mauro <leomaurodesenv>"
-LABEL version="0.3.3"
+LABEL version="0.4.3"
 
 ENV LISTEN_PORT 5050
 EXPOSE 5050

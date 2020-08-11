@@ -5,7 +5,8 @@
 [![Build Status](https://travis-ci.com/leomaurodesenv/data-science-api-framework.svg?branch=master)](https://travis-ci.com/leomaurodesenv/data-science-api-framework)
    
 This repository is the basis for a fast, efficient and scalable python API structure for data scientists.   
-This framework presents a continuous integration test using [Travis CI](https://travis-ci.com/), a [Docker](https://www.docker.com/) image to deploy your data science project, and, finally, a simple API Restful implementation to allow security access for everyone; facilitating the test, development and deployment for production.  
+This framework presents a continuous integration test using [Travis CI](https://travis-ci.com/), a [Docker](https://www.docker.com/) image to deploy your data science project, and, finally, a simple API Restful implementation to allow security access for everyone; facilitating the documentation, test, development, and deployment for production.  
+
 Combing all these things, this framework provides an potential DataOps procedure for your project. "DataOps is an automated, process-oriented methodology, used by analytic and data teams, to improve the quality and reduce the cycle time of data analytics ... DataOps focuses on continuous delivery by leveraging on-demand IT resources and by automating test and deployment". [Wikipedia](https://en.wikipedia.org/wiki/DataOps).   
 
 ![Idea](img/main-idea.png)
@@ -23,21 +24,15 @@ Each Operating System (OS) have its own steps.
 # build image
 $ docker build -t ds-api .
 # running container
-$ docker run -it --rm --name ds-api-container -p 5050:5050 ds-api
+$ docker run -it --rm --name ds-api-container -p 5050:80 ds-api
 ```
 
-Done! You can access your API in http://localhost:5050/api/?get=message.   
+Done! You can access your API in http://localhost:5050/.   
 
 ### Coding your API
 
-Modify [app/api.py](app/api.py) Python file; add your API logic.   
-
-```python
-# Called when the service is loaded
-def init():
-# Called when the API is requested
-def run(args):
-```
+Create your endpoint logic (API), such as [app/endpoints/hello_world.py](app/endpoints/hello_world.py).   
+Add the new endpoint to [app/main.py](app/main.py); that is it, just run.   
 
 ---
 ## Deep personalization
