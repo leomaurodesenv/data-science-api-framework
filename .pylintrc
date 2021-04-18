@@ -1,0 +1,4 @@
+#-- ignore problem with fastapi
+
+[MESSAGES CONTROL]
+disable=e0401

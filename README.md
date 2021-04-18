@@ -9,7 +9,7 @@ This framework presents a continuous integration test using [Travis CI](https://
 
 Combing all these things, this framework provides an potential DataOps procedure for your project. "DataOps is an automated, process-oriented methodology, used by analytic and data teams, to improve the quality and reduce the cycle time of data analytics ... DataOps focuses on continuous delivery by leveraging on-demand IT resources and by automating test and deployment". [Wikipedia](https://en.wikipedia.org/wiki/DataOps).   
 
-![Idea](img/main-idea.png)
+![Idea](documentation/main-idea.png)
 
 ---
 ## Start Coding
@@ -25,17 +25,28 @@ Each Operating System (OS) have its own steps.
 Download or clone this repository, and run   
 
 ```shell
-# build image
+## Install requirements
+$ pip install --no-cache-dir -r ./requirements.txt
+
+## Running local - with Python
+$ uvicorn app.main:API --port 5050
+
+## Running local - with Docker
 $ docker build -t ds-api .
-# running container
-$ docker run -it --rm --name ds-api-container -p 5050:80 ds-api
+$ docker run -it --rm --name api-container -p 5050:8080 ds-api
+
+## Open browser
+# http://127.0.0.1:8080/
+
+## Open browser - Swagger documentation
+# http://127.0.0.1:8080/docs
 ```
 
 Done! You can access your API in http://localhost:5050/.   
 
 ### Coding your API
 
-Create your endpoint logic (API), such as [app/endpoints/hello_world.py](app/endpoints/hello_world.py).   
+Create your endpoint logic (API), such as [app/routers/hello_world.py](app/routers/hello_world.py).   
 Add the new endpoint to [app/main.py](app/main.py); that is it, just run.   
 
 ---
@@ -43,9 +54,8 @@ Add the new endpoint to [app/main.py](app/main.py); that is it, just run.
 
 Useful personalizations:   
 -   Add Python libraries for your API; see [requirements.txt](requirements.txt).
--   Add new API endpoints; see [app/main.py](app/main.py).
--   Create new endpoints, such as [app/endpoints/hello_world.py](app/endpoints/hello_world.py).
--   Improve restplus; see [app/restplus.py](app/restplus.py).
+-   Add new API routers; see [app/main.py](app/main.py).
+-   Create new routers, such as [app/routers/hello_world.py](app/routers/hello_world.py).
 -   Improve the continuos integration tests; see [travis.yml](travis.yml).
 -   Improve the Docker image; see [Dockerfile](Dockerfile).
 -   Create an issue for any questions or suggestions!

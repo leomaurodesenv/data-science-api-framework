@@ -1,19 +1,22 @@
-#-- Define the startup image
-FROM tiangolo/meinheld-gunicorn-flask:python3.7
+#-- Define image
+FROM python:3.8-slim
 
 #-- Define the labels
 LABEL maintainer="Leonardo Mauro <leomaurodesenv>"
-LABEL version="0.4.4"
+LABEL project="data-science-api-framework"
 
-ENV LISTEN_PORT 5050
-EXPOSE 5050
+#-- App predefinitions
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+
+ENV LISTEN_PORT 8080
+EXPOSE 8080
 
 #-- Python requirements
 RUN python -m pip install --upgrade pip
-# requirements.txt
-COPY ./requirements.txt /app
-RUN pip install --no-cache-dir -r /app/requirements.txt
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-#-- Working directory
-# it will be virtualized in docker run
-COPY ./app /app
+#-- Project
+COPY . ./
+CMD gunicorn -w 2 -b :8080 -k uvicorn.workers.UvicornWorker app.main:API
