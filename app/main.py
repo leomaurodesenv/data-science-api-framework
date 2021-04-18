@@ -3,38 +3,54 @@
 @authors: Leonardo Mauro <leomaurodesenv>
 @link: https://github.com/leomaurodesenv/data-science-api-framework GitHub
 @license: MIT License
-@copyright: 2020 Leonardo Mauro
+@copyright: 2021 Leonardo Mauro
 @access: public
 '''
 
-#-- Imports
-import config
-from restplus import api
-from flask import Flask
-from werkzeug.contrib.fixers import ProxyFix
-#-- Endpoints
-from endpoints.hello_world import api as ns_hello
+# FastAPI
+from fastapi import FastAPI
+
+# Security - Optional
+from fastapi import Depends
+from fastapi.security.api_key import APIKey
+from app.security import api_token
+
+# Settings
+import app.config as config
+
+# Routers
+# include new endpoints here ---
+from app.routers import hello_world
 
 
-#-- API predefinitions
-app = Flask(__name__)
-app.wsgi_app = ProxyFix(app.wsgi_app)
+# ----------------------------------------------------------------------
+# General response
+RESPONSE = {"status": "ok"}
+
+API = FastAPI(
+    title=config.API_TITLE,
+    description=config.API_DESCRIPTION,
+    version=config.API_VERSION
+)
+
+# add new endpoints here ---
+API.include_router(hello_world.ROUTER)
 
 
-#-- API Configurations
-def configure_app(app):
-    app.config['DEBUG'] = config.FLASK_DEBUG
-    app.config['ENV'] = config.FLASK_ENV
-    app.config['SWAGGER_UI_DOC_EXPANSION'] = config.RESTPLUS_SWAGGER_UI_DOC_EXPANSION
-    app.config['RESTPLUS_MASK_SWAGGER'] = config.RESTPLUS_MASK_SWAGGER
+# ----------------------------------------------------------------------
+# Main endpoints
+@API.get("/")
+def health_check():
+    '''
+    API health check
+    '''
+    return RESPONSE
 
 
-#-- API Init
-configure_app(app)
-#-- add your endpoints here
-api.init_app(app)
-api.add_namespace(ns_hello)
-
-
-if __name__ == '__main__':
-    app.run(host=config.FLASK_HOST, port=config.FLASK_PORT)
+@API.post("/securityTest")
+def security(token: APIKey = Depends(api_token)):
+    '''
+    Test your authenticationToken
+    - Configured in `security.py` file
+    '''
+    return RESPONSE, token

@@ -1,17 +1,28 @@
-#-- Main packages
-# api
-flask==1.0.3
-flask-restplus==0.13.0
-Werkzeug==0.16.1 # bug in other versions, fixing version
-# data
+# FastAPI
+fastapi==0.63.0
+gunicorn==20.0.4
+uvicorn==0.13.3
+# additional
+uvloop==0.14.0
+httptools==0.1.1
+
+# Data typing
+typing==3.7.4.3
+pydantic==1.7.3
+
+# Environment variables
+python-decouple==3.4
+
+# Data processing
 numpy==1.19.0
 pandas==1.0.5
-# science
+
+# Science
 scipy==1.5.1
 scikit-learn==0.23.1
-# visualization
+
+# Visualization
 matplotlib==3.2.2
 seaborn==0.9.0
 
-#-- Additional packages
-# Put your additional packages here!
+# Add additional packages here ---

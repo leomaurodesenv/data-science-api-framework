@@ -5,9 +5,13 @@
 # Local History for Visual Studio Code
 .history/
 
+# Environment
+.env
+
 # Python cache
 __pycache__/
 *.pyc
 
 # Local tests
 run.bat
+run.sh
