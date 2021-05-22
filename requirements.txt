@@ -8,7 +8,7 @@ httptools==0.1.1
 
 # Data typing
 typing==3.7.4.3
-pydantic==1.7.3
+pydantic==1.7.4
 
 # Environment variables
 python-decouple==3.4
