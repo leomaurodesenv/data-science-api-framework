@@ -14,7 +14,7 @@ pydantic==1.7.4
 python-decouple==3.4
 
 # Data processing
-numpy==1.19.0
+numpy==1.22.0
 pandas==1.0.5
 
 # Science
