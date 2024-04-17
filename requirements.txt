@@ -1,6 +1,6 @@
 # FastAPI
 fastapi==0.109.1
-gunicorn==20.0.4
+gunicorn==22.0.0
 uvicorn==0.13.3
 # additional
 uvloop==0.14.0
